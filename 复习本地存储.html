@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn1">set</button>
+    <button id="btn2">get</button>
+    <button id="btn3">delete</button>
+    <button id="btn4">clear</button>
+    <script>
+        //只能保存字符串（黑色）---数组=>字符串 &对象=>object 
+        var btn1 = document.getElementById('btn1');
+        btn1.onclick = function() {
+            window.localStorage.setItem('name','Lina');
+            window.localStorage.setItem('sex','female');
+        }
+        document.getElementById('btn2').onclick = function(){
+            let res =  window.localStorage.getItem('name')
+            console.log(res);
+        }
+        document.getElementById('btn3').onclick = function(){
+            let res =  window.localStorage.removeItem('name')
+            console.log(res);
+        }
+        document.getElementById('btn4').onclick = function(){
+            let res =  window.localStorage.clear()
+            console.log(res);
+        }
+    </script>
+</body>
+</html>
