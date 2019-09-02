@@ -59,21 +59,25 @@
     <el-main class="my-main">
       <el-container>
         <el-header class="my-main-header">
+
           <el-row class="my-row">
             <el-col :span="12">
               <span>江苏传智播客科技教育股份有限公司</span>
             </el-col>
-            <el-col :span="6" :offset="2" class="searchInfo">
+
+            <el-col :span="6" :offset="4" class="searchInfo">
               <el-input placeholder="请输入搜索内容" class="inputTxt">
                 <i slot="prefix" class="el-input__icon el-icon-search"></i>
               </el-input>
             </el-col>
+
             <el-col :span="2">
               <span style="margin-left:20px;">消息</span>
             </el-col>
-            <el-col :span="4" :offset="2">
-              <el-dropdown trigger="click" @command="handleCommand">
-                <span class="el-dropdown-link my-el-dropdown-link">
+
+            <el-col :span="4"  >
+              <el-dropdown trigger="click" @command="handleCommand" class="my-dropdown">
+                <span class="el-dropdown-link ">
                   <img :src="userInfo.photo" alt />
                   <span class="userCenter">{{userInfo.name}}</span>
                   <i class="el-icon-arrow-down el-icon--right"></i>
@@ -85,6 +89,7 @@
                 </el-dropdown-menu>
               </el-dropdown>
             </el-col>
+
           </el-row>
         </el-header>
         <el-main class="my-main-main">Main</el-main>
@@ -94,6 +99,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 export default {
   data() {
     return {
@@ -152,13 +158,13 @@ export default {
       background: skyblue;
       .my-row {
         height: 100%;
+        width: 100%;
         display: flex;
-        justify-content: center;
+        // justify-content: center;
         align-items: center;
         .my-dropdown {
           width: 100%;
           .el-dropdown-link {
-            width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -168,8 +174,8 @@ export default {
             }
           }
           img {
-            width: 40px !important;
-            height: 40px !important;
+            width: 40px ;
+            height: 40px ;
             border-radius: 20px;
           }
         }
