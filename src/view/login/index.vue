@@ -19,6 +19,10 @@
             </el-col>
           </el-row>
         </el-form-item>
+
+        <el-form-item prop='check'>
+          <el-checkbox v-model="ruleForm.check"><span>我已阅读并同意</span><a href="javascript:void(0);">用户协议</a>和<a href="javascript:void(0);">隐私条款</a></el-checkbox>
+        </el-form-item>
         <el-form-item>
           <el-button type="primary" class="btn-login" @click="btnLogin('ruleForm')" v-loading="isLoading">登录</el-button>
         </el-form-item>
@@ -37,7 +41,8 @@ export default {
       sec:60,
       ruleForm: {
         mobile: "18801185985",
-        code: ""
+        code: "",
+        check:true
       },
       rules: {
         mobile: [

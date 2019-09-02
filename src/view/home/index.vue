@@ -92,7 +92,24 @@
 
           </el-row>
         </el-header>
-        <el-main class="my-main-main">Main</el-main>
+        <el-main class="my-main-main">
+          <el-row class="my-main-main-title">
+            <el-col :span="6">
+              <ul>
+                <li><img src="./pugongying2.jpg" alt=""></li>
+                <li><span>黑马头条官方账号</span>
+              <span>视频发布</span></li>
+              </ul>
+            </el-col>
+            <el-col :span="14" :offset="10">
+              <ul class="count">
+                <li><span>222</span><span>粉丝数</span></li><li class="line"></li>
+                <li><span>333</span><span>累计阅读量</span></li><li class="line"></li>
+                <li><span>444</span><span>累计评论数</span></li>
+              </ul>
+            </el-col>
+          </el-row>
+        </el-main>
       </el-container>
     </el-main>
   </el-container>
@@ -135,6 +152,7 @@ export default {
 </script>
 <style lang='less' escoped>
 .my-container {
+  background: #f2f3f5;
   height: 100%;
   .my-aside {
     height: 100%;
@@ -154,8 +172,8 @@ export default {
   .my-main {
     padding: 0;
     .my-main-header {
-      padding: 0;
-      background: skyblue;
+      background: #fff;
+      padding: 10px;
       .my-row {
         height: 100%;
         width: 100%;
@@ -177,6 +195,52 @@ export default {
             width: 40px ;
             height: 40px ;
             border-radius: 20px;
+          }
+        }
+      }
+    }
+    .my-main-main {
+      .my-main-main-title {
+        padding: 6px 5px;
+        background: #fff;
+        border:1px solid #e7e7e9;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        li{
+          float: left;
+          font-size: 14px;
+
+          &:nth-child(2)  {
+            margin-left: 5px;
+            margin-top: 6px;
+            span:nth-child(2) {
+              color:#ccc;
+              margin-right:-56px;
+            }
+          }
+          
+          img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+          }
+        }
+        ul.count {
+          li {
+            width: 148px;
+            text-align: center;
+            &.line{
+              width:1px;
+              height: 40px;
+              background: #eee;
+            }
+            span {
+              display: block;
+              &:nth-child(2) {
+                color:#ccc;
+              }
+            }
           }
         }
       }
