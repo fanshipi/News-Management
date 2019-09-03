@@ -3,15 +3,22 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+
 import Home from '../view/home'
 import Login from '../view/login'
+import article from '../view/home/article'
 
 // register
 
 
 // rules
 const routes = [
-    {path:'/home',component:Home},
+    {path:'/home',component:Home,children:[
+        {path:'/article',component:article}
+    ]
+},
     {path:'/login',component:Login},
 ]
 
@@ -25,6 +32,7 @@ const router = new VueRouter({
 // from从哪里来
 // next接下来去的地方
 router.beforeEach((to,from,next)=>{
+    NProgress.start();
     if(to.path != '/login') {
         let res = window.sessionStorage.getItem('user_info')
         if(res) {
@@ -37,6 +45,16 @@ router.beforeEach((to,from,next)=>{
         next()
     }
 })
+
+router.afterEach((to,from)=>{
+   setTimeout(()=>{
+    NProgress.done();
+   },300)
+})
+
+
+
+
 
 // export
 export default router

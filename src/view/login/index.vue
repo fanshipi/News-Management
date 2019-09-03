@@ -33,7 +33,7 @@
 
 <script>
 import { setInterval, clearInterval } from 'timers';
-import axios from 'axios'
+// import axios from 'axios'
 export default {
   data() {
     return {
@@ -86,7 +86,7 @@ export default {
           if (valid) {
             this.isLoading = true
             // 发送请求，获取数据判断进行登录
-            axios.post("http://ttapi.research.itcast.cn/mp/v1_0/authorizations",{
+            this.$axios.post("/mp/v1_0/authorizations",{
              mobile: this.ruleForm.mobile,
              code:this.ruleForm.code
             })
@@ -98,11 +98,17 @@ export default {
               // console.log(arr);
 
               if(res.data.data) {
-                this.$message('登录成功');
+                this.$message({
+                  message:'登录成功',
+                  type: "success"
+                  });
                 this.$router.push('/home')
               }else {
                 this.isLoading = false
-                this.$message.error('手机号码或者验证码错误')
+                this.$message.error({
+                   message:'登录失败',
+                   type: "error"
+                })
                 return
               }
             })

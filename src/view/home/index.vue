@@ -10,6 +10,7 @@
         </el-header>
         <el-main class="my-aside-main">
           <el-menu
+            :router=true
             default-active="2"
             class="el-menu-vertical-demo"
             background-color="#353b4e"
@@ -29,7 +30,7 @@
               </template>
               <el-menu-item-group>
                 <el-menu-item index="1-1">发布文章</el-menu-item>
-                <el-menu-item index="1-2">内容列表</el-menu-item>
+                <el-menu-item index="/article">内容列表</el-menu-item>
                 <el-menu-item index="1-2">评论列表</el-menu-item>
                 <el-menu-item index="1-2">素材管理</el-menu-item>
               </el-menu-item-group>
@@ -93,7 +94,9 @@
           </el-row>
         </el-header>
         <el-main class="my-main-main">
-          <el-row class="my-main-main-title">
+
+          <router-view></router-view>
+          <!-- <el-row class="my-main-main-title">
             <el-col :span="6">
               <ul>
                 <li><img src="./pugongying2.jpg" alt=""></li>
@@ -108,7 +111,7 @@
                 <li><span>444</span><span>累计评论数</span></li>
               </ul>
             </el-col>
-          </el-row>
+          </el-row> -->
         </el-main>
       </el-container>
     </el-main>
