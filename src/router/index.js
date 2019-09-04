@@ -9,6 +9,7 @@ import 'nprogress/nprogress.css'
 import Home from '../view/home'
 import Login from '../view/login'
 import article from '../view/home/article'
+import publish from '../view/home/publish'
 
 // register
 
@@ -16,7 +17,8 @@ import article from '../view/home/article'
 // rules
 const routes = [
     {path:'/home',component:Home,children:[
-        {path:'/article',component:article}
+        {path:'/article/',component:article},
+        {path:'/publish/',component:publish}
     ]
 },
     {path:'/login',component:Login},
