@@ -12,7 +12,7 @@
           </el-radio-group>
         </el-form-item>
         <el-form-item label="频道">
-          <ttchannels></ttchannels>
+          <ttchannels v-model="searchParams.chanel_id"></ttchannels>
         </el-form-item>
 
         <el-form-item label="时间">
@@ -51,7 +51,7 @@
 
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <el-button size="mini" @click="handleEdit(scope.$index, scope.row)" type="primary">编辑</el-button>
+          <el-button size="mini" @click="handleEdit(scope.row)" type="primary">编辑</el-button>
           <el-button size="mini" type="danger" @click="handleDelete(scope.row)">删除</el-button>
         </template>
       </el-table-column>
@@ -94,8 +94,9 @@ export default {
   },
   methods: {
     // 编辑按钮
-    handleEdit(index, row) {
-      console.log(index, row);
+    handleEdit(row) {
+      // console.log(row.id);
+      this.$router.push('/publish/'+row.id);
     },
     // 删除按钮
     handleDelete(row) {

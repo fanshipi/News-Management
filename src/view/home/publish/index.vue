@@ -9,7 +9,7 @@
       </el-form-item>
       <el-form-item label="封面"></el-form-item>
       <el-form-item label="频道">
-        <ttchannels></ttchannels>
+        <ttchannels v-model="form.chanel_id"></ttchannels>
       </el-form-item>
       <el-form-item>
         <el-button size="small" type="danger">取消</el-button>
@@ -80,25 +80,49 @@ export default {
     uploading(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          this.$axios
-            .post("/mp/v1_0/articles", {
-              title: this.form.title,
-              content: this.form.content,
-              cover: {
-                type: 1,
-                images: [
-                  "http://toutiao.meiduo.site/Fjl26KTE9-NFfkRzIZOner4yeqGl"
-                ]
-              },
-              channel_id: 2
-            })
-            .then(res => {
-              if (res.data.message.toLowerCase() == "ok") {
-                this.$message.success("发布成功！");
-                this.$router.push("/article");
-              }
-              console.log(res);
-            });
+          if (this.$route.name == "publish-edit") {
+            // 判断是否为编辑
+            //发送请求，修改数据
+            this.$axios
+              .put(`/mp/v1_0/articles/${this.$route.params.id}`, {
+                title: this.form.title,
+                content: this.form.content,
+                cover: {
+                  type: 1,
+                  images: [
+                    "http://toutiao.meiduo.site/Fjl26KTE9-NFfkRzIZOner4yeqGl"
+                  ]
+                },
+                channel_id: this.form.channel_id
+              })
+              .then(res => {
+                // console.log(res);
+                 if (res.data.message.toLowerCase() == "ok") {
+                  this.$message.success("发布成功！");
+                  this.$router.push("/article");
+                }
+              });
+          } else {
+            this.$axios
+              .post("/mp/v1_0/articles", {
+                title: this.form.title,
+                content: this.form.content,
+                cover: {
+                  type: 1,
+                  images: [
+                    "http://toutiao.meiduo.site/Fjl26KTE9-NFfkRzIZOner4yeqGl"
+                  ]
+                },
+                channel_id: this.form.channel_id
+              })
+              .then(res => {
+                if (res.data.message.toLowerCase() == "ok") {
+                  this.$message.success("发布成功！");
+                  this.$router.push("/article");
+                }
+                // console.log(res);
+              });
+          }
         } else {
           console.log("error submit!!");
           return false;
@@ -108,6 +132,13 @@ export default {
     // resetForm(formName) {
     //   this.$refs[formName].resetFields();
     // }
+  },
+  created() {
+    // 获取传递过来的参数id
+    // this.$route.params.id
+    this.$axios.get(`/mp/v1_0/articles/${this.$route.params.id}`).then(res => {
+      this.form = res.data.data;
+    });
   }
 };
 </script>

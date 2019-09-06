@@ -10,7 +10,7 @@
         </el-header>
         <el-main class="my-aside-main">
           <el-menu
-            :router=true
+            :router="true"
             default-active="2"
             class="el-menu-vertical-demo"
             background-color="#353b4e"
@@ -60,7 +60,6 @@
     <el-main class="my-main">
       <el-container>
         <el-header class="my-main-header">
-
           <el-row class="my-row">
             <el-col :span="12">
               <span>江苏传智播客科技教育股份有限公司</span>
@@ -76,9 +75,9 @@
               <span style="margin-left:20px;">消息</span>
             </el-col>
 
-            <el-col :span="4"  >
+            <el-col :span="4">
               <el-dropdown trigger="click" @command="handleCommand" class="my-dropdown">
-                <span class="el-dropdown-link ">
+                <span class="el-dropdown-link">
                   <img :src="userInfo.photo" alt />
                   <span class="userCenter">{{userInfo.name}}</span>
                   <i class="el-icon-arrow-down el-icon--right"></i>
@@ -90,11 +89,9 @@
                 </el-dropdown-menu>
               </el-dropdown>
             </el-col>
-
           </el-row>
         </el-header>
         <el-main class="my-main-main">
-
           <router-view></router-view>
           <!-- <el-row class="my-main-main-title">
             <el-col :span="6">
@@ -111,7 +108,7 @@
                 <li><span>444</span><span>累计评论数</span></li>
               </ul>
             </el-col>
-          </el-row> -->
+          </el-row>-->
         </el-main>
       </el-container>
     </el-main>
@@ -123,31 +120,31 @@
 export default {
   data() {
     return {
-      userInfo:{
-        name:'',
-        photo:''
+      userInfo: {
+        name: "",
+        photo: ""
       }
     };
   },
-  created(){
-    let res = window.sessionStorage.getItem('user_info')
+  created() {
+    let res = window.sessionStorage.getItem("user_info");
     // 获取到登录页面的登录信息，并转成对象
-    let obj = JSON.parse(res)
+    let obj = JSON.parse(res);
 
-    this.userInfo.name = obj.name
-    this.userInfo.photo = obj.photo
+    this.userInfo.name = obj.name;
+    this.userInfo.photo = obj.photo;
   },
   methods: {
     handleCommand(command) {
       // logout
       // 页面跳转
       // 消除当前的登录信息
-      if(command == 'logout') {
-        window.sessionStorage.removeItem('user_info')
-        this.$router.push('/login')
-      }else if(command == 'git') {
+      if (command == "logout") {
+        window.sessionStorage.removeItem("user_info");
+        this.$router.push("/login");
+      } else if (command == "git") {
         // git跳转页面
-        window.open('https://github.com/fanshipi/studePull')
+        window.open("https://github.com/fanshipi/studePull");
       }
     }
   }
@@ -160,6 +157,7 @@ export default {
   .my-aside {
     height: 100%;
     background: #323745;
+    overflow: hidden;
     .my-aside-header {
       display: flex;
       justify-content: center;
@@ -195,8 +193,8 @@ export default {
             }
           }
           img {
-            width: 40px ;
-            height: 40px ;
+            width: 40px;
+            height: 40px;
             border-radius: 20px;
           }
         }
@@ -206,23 +204,23 @@ export default {
       .my-main-main-title {
         padding: 6px 5px;
         background: #fff;
-        border:1px solid #e7e7e9;
+        border: 1px solid #e7e7e9;
         height: 100%;
         display: flex;
         align-items: center;
-        li{
+        li {
           float: left;
           font-size: 14px;
 
-          &:nth-child(2)  {
+          &:nth-child(2) {
             margin-left: 5px;
             margin-top: 6px;
             span:nth-child(2) {
-              color:#ccc;
-              margin-right:-56px;
+              color: #ccc;
+              margin-right: -56px;
             }
           }
-          
+
           img {
             width: 50px;
             height: 50px;
@@ -233,15 +231,15 @@ export default {
           li {
             width: 148px;
             text-align: center;
-            &.line{
-              width:1px;
+            &.line {
+              width: 1px;
               height: 40px;
               background: #eee;
             }
             span {
               display: block;
               &:nth-child(2) {
-                color:#ccc;
+                color: #ccc;
               }
             }
           }
