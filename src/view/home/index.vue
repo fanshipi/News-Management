@@ -31,8 +31,8 @@
               <el-menu-item-group>
                 <el-menu-item index="/publish">发布文章</el-menu-item>
                 <el-menu-item index="/article">内容列表</el-menu-item>
-                <el-menu-item index="1-2">评论列表</el-menu-item>
-                <el-menu-item index="1-2">素材管理</el-menu-item>
+                <el-menu-item index="/comment">评论列表</el-menu-item>
+                <el-menu-item index="/media">素材管理</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
 
@@ -43,13 +43,13 @@
               </template>
               <el-menu-item-group>
                 <el-menu-item index="3-1">图文数据</el-menu-item>
-                <el-menu-item index="3-2">粉丝概况</el-menu-item>
+                <el-menu-item index="/overview">粉丝概况</el-menu-item>
                 <el-menu-item index="3-3">粉丝画像</el-menu-item>
                 <el-menu-item index="3-4">粉丝列表</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
 
-            <el-menu-item index="4">
+            <el-menu-item index="/account">
               <i class="el-icon-user-solid"></i>
               <span slot="title">账户信息</span>
             </el-menu-item>
@@ -78,8 +78,8 @@
             <el-col :span="4">
               <el-dropdown trigger="click" @command="handleCommand" class="my-dropdown">
                 <span class="el-dropdown-link">
-                  <img :src="userInfo.photo" alt />
-                  <span class="userCenter">{{userInfo.name}}</span>
+                  <img :src="$store.state.userInfo.photo" alt />
+                  <span class="userCenter">{{$store.state.userInfo.name}}</span>
                   <i class="el-icon-arrow-down el-icon--right"></i>
                 </span>
                 <el-dropdown-menu slot="dropdown">
@@ -127,12 +127,18 @@ export default {
     };
   },
   created() {
-    let res = window.sessionStorage.getItem("user_info");
-    // 获取到登录页面的登录信息，并转成对象
-    let obj = JSON.parse(res);
+    // let res = window.sessionStorage.getItem("user_info");
+    // // 获取到登录页面的登录信息，并转成对象
+    // let obj = JSON.parse(res);
 
-    this.userInfo.name = obj.name;
-    this.userInfo.photo = obj.photo;
+    // this.userInfo.name = obj.name;
+    // this.userInfo.photo = obj.photo;
+
+    // 判断有没有登录
+    this.$axios.get('/mp/v1_0/user/profile')
+    .then(res=>{
+      this.$store.commit('changeUserInfo',res.data.data)
+    })
   },
   methods: {
     handleCommand(command) {

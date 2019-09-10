@@ -15,6 +15,10 @@ import Home from '../view/home'
 import Login from '../view/login'
 import article from '../view/home/article'
 import publish from '../view/home/publish'
+import comment from '../view/home/comment'
+import account from '../view/home/account'
+import overview from '../view/home/overview'
+import media from '../view/home/media'
 
 // register
 
@@ -22,9 +26,14 @@ import publish from '../view/home/publish'
 // rules
 const routes = [
     {path:'/home',component:Home,children:[
+        {path:'/',component:article},
         {path:'/article/',component:article},
         {path:'/publish/',component:publish},
         {path:'/publish/:id',component:publish, name:"publish-edit"},
+        {path:'/comment/',component:comment},
+        {path:'/account/',component:account},
+        {path:'/overview/',component:overview},
+        {path:'/media/',component:media,name:'media'},
     ]
 },
     {path:'/login',component:Login},
