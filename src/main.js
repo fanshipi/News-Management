@@ -21,7 +21,7 @@ Vue.prototype.$axios = axios
   axios.defaults.transformResponse = [function (data) {
     // 对 data 进行任意转换处理
     // console.log(data);
-    // return data;
+    // return data;0
     // console.log(JSONbig.parse(data));
     
     // return JSONbig.parse(data);

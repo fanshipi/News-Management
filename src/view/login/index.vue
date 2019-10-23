@@ -2,7 +2,7 @@
   <div class="login-wrapper">
     <div class="login-main">
       <div class="logo">
-        <img src="./img/login_logo.png" alt />
+        <img src="https://imgpub.chuangkit.com/designTemplate/2018/12/06/444911650_thumb?v=1563604920000&x-oss-process=image/resize,w_500/format,webp" alt style="width:210px;height:140px;padding:0"/>
       </div>
       <el-form :model="ruleForm" ref="ruleForm" class="demo-ruleForm" :rules="rules">
         <el-form-item prop="mobile">
@@ -125,7 +125,7 @@ export default {
 <style lang="less" escoped>
 .login-wrapper {
   height: 100%;
-  background: url("./img/login_bg.jpg") no-repeat center / cover;
+  background: url("https://imgpub.chuangkit.com/designTemplate/2018/08/28/434272957_thumb?v=1535420760000") no-repeat center / cover;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -133,9 +133,9 @@ export default {
     text-align: center;
     width: 300px;
     background: #fff;
-    padding: 40px;
+    padding:20px 40px 40px;
     .logo {
-      margin-bottom: 30px;
+      // margin-bottom: 30px;
     }
     .btn-login {
       width: 100%;

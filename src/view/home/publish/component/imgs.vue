@@ -5,7 +5,7 @@
       <i v-if="!isShowImg" class="el-icon-upload2"></i>
       <img v-if="isShowImg" :src="imageUrl" alt />
     </div>
-    <el-dialog :visible="dialogVisible" width="50%" :before-close="handleClose">
+    <el-dialog :visible.sync="dialogVisible" width="50%" >
       <template>
         <el-tabs type="card" v-model="activeName">
           <el-tab-pane label="素材库" name="first">
@@ -67,13 +67,7 @@ export default {
       // 传值
       this.$emit('changePic',this.imageUrl)
     },
-    handleClose(done) {
-      this.$confirm("确认关闭？")
-        .then(_ => {
-          done();
-        })
-        .catch(_ => {});
-    }
+   
   }
 };
 </script>
