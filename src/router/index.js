@@ -19,6 +19,7 @@ import comment from '../view/home/comment'
 import account from '../view/home/account'
 import overview from '../view/home/overview'
 import media from '../view/home/media'
+import homepage from '../view/home/homepage'
 
 // register
 
@@ -26,7 +27,8 @@ import media from '../view/home/media'
 // rules
 const routes = [
     {path:'/home',component:Home,children:[
-        {path:'/',component:article},
+        {path:'/',component:homepage},
+        {path:'/homepage',component:homepage},
         {path:'/article/',component:article},
         {path:'/publish/',component:publish},
         {path:'/publish/:id',component:publish, name:"publish-edit"},

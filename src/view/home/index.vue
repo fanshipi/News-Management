@@ -4,7 +4,8 @@
       <el-container style="marginBottom:1px;background: #f2f3f5;">
         <el-header class="my-aside-header" style="width:200px;height:100px;padding:0">
           <img
-            src="http://img3.imgtn.bdimg.com/it/u=520709884,3171189443&fm=11&gp=0.jpg" style="width:100%;height:100%;marginTop:-5px;"
+            src="http://img3.imgtn.bdimg.com/it/u=520709884,3171189443&fm=11&gp=0.jpg"
+            style="width:100%;height:100%;marginTop:-5px;"
             alt
           />
         </el-header>
@@ -18,7 +19,7 @@
             active-text-color="#ffd04b"
             :unique-opened="true"
           >
-            <el-menu-item index="2">
+            <el-menu-item index="/homepage">
               <i class="el-icon-menu"></i>
               <span slot="title">首页</span>
             </el-menu-item>
@@ -75,10 +76,10 @@
               <span style="margin-left:20px;">消息</span>
             </el-col>
 
-            <el-col :span="4">
+            <el-col :span="4" style="display:flex;">
+              <img :src="$store.state.userInfo.photo" alt />
               <el-dropdown trigger="click" @command="handleCommand" class="my-dropdown">
                 <span class="el-dropdown-link">
-                  <img :src="$store.state.userInfo.photo" alt />
                   <span class="userCenter">{{$store.state.userInfo.name}}</span>
                   <i class="el-icon-arrow-down el-icon--right"></i>
                 </span>
@@ -135,10 +136,9 @@ export default {
     // this.userInfo.photo = obj.photo;
 
     // 判断有没有登录
-    this.$axios.get('/mp/v1_0/user/profile')
-    .then(res=>{
-      this.$store.commit('changeUserInfo',res.data.data)
-    })
+    this.$axios.get("/mp/v1_0/user/profile").then(res => {
+      this.$store.commit("changeUserInfo", res.data.data);
+    });
   },
   methods: {
     handleCommand(command) {
@@ -164,7 +164,7 @@ export default {
     height: 100%;
     background: #323745;
     overflow: hidden;
-    background-color:#14607a;
+    background-color: #14607a;
     .my-aside-header {
       display: flex;
       justify-content: center;
@@ -188,21 +188,21 @@ export default {
         display: flex;
         // justify-content: center;
         align-items: center;
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 20px;
+        }
         .my-dropdown {
           width: 100%;
+          margin-top: 10px;
           .el-dropdown-link {
             display: flex;
             justify-content: center;
             align-items: center;
-
             .userCenter {
               margin: 0 10px;
             }
-          }
-          img {
-            width: 40px;
-            height: 40px;
-            border-radius: 20px;
           }
         }
       }
